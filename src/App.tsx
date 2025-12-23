@@ -184,7 +184,7 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 pt-20 max-w-7xl mx-auto">
+    <section id="about" className="min-h-screen flex flex-col justify-center px-6 md:px-12 pt-20 max-w-7xl mx-auto">
       <div className="space-y-8 max-w-4xl">
         <div className="inline-flex items-center space-x-2 bg-neutral-100 px-3 py-1 rounded-full w-fit">
           <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
