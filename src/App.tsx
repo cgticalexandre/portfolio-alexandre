@@ -297,6 +297,7 @@ const Work = () => {
 const Contact = () => {
   return (
     <section id="contact" className="py-24 px-6 md:px-12 bg-neutral-900 text-white">
+      <RevealOnScroll>
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8">Vamos construir algo juntos?</h2>
         <p className="text-neutral-400 text-lg md:text-xl mb-12 font-light max-w-2xl mx-auto">
@@ -320,6 +321,7 @@ const Contact = () => {
             </div>
         </footer>
       </div>
+      </RevealOnScroll>
     </section>
   );
 };
