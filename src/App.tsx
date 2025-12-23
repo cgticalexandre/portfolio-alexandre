@@ -13,7 +13,8 @@ import {
   Server, 
   Terminal,
   Cpu,
-  ExternalLink 
+  ExternalLink,
+  PenTool
 } from 'lucide-react';
 
 // --- Types & Interfaces ---
@@ -78,7 +79,7 @@ const skills: Skill[] = [
   },
   {
     name: "UI/UX Design",
-    icon: Code2, // Using Code2 as a placeholder for creative aspect
+    icon: PenTool,
     description: "Abordagem minimalista e funcional. Prototipagem em Figma traduzida fielmente para código limpo e semântico."
   }
 ];
@@ -311,9 +312,9 @@ const Contact = () => {
         <div className="mt-20 pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center text-neutral-500 text-sm">
             <p>&copy; {new Date().getFullYear()} Dev Portfolio. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-                <a href="#" className="hover:text-white transition-colors">Twitter</a>
-                <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
                 <a href="#" className="hover:text-white transition-colors">GitHub</a>
+                <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
+                <a href="#" className="hover:text-white transition-colors">Instagram</a>
             </div>
         </div>
       </div>
@@ -325,13 +326,7 @@ const Contact = () => {
 
 export default function App() {
   return (
-    <div className="bg-white min-h-screen font-sans antialiased text-neutral-900 selection:bg-blue-100 selection:text-blue-900">
-        {/* Inject Google Font Inter for that crisp minimal look */}
-        <style dangerouslySetInnerHTML={{__html: `
-          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-          body { font-family: 'Inter', sans-serif; }
-        `}} />
-        
+    <div className="bg-white min-h-screen antialiased text-neutral-900 selection:bg-blue-100 selection:text-blue-900">
         <Navbar />
         <main>
             <Hero />
