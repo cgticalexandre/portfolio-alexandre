@@ -15,7 +15,8 @@ import {
   Terminal,
   Cpu,
   ExternalLink,
-  PenTool
+  PenTool,
+  ArrowUp
 } from 'lucide-react';
 
 // --- Types & Interfaces ---
@@ -127,7 +128,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden z-50 text-neutral-900" onClick={() => setIsOpen(!isOpen)}>
+        <button className="md:hidden z-50 text-neutral-900" onClick={() => setIsOpen(!isOpen)} aria-label="Alternar menu">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
@@ -185,9 +186,9 @@ const Hero = () => {
           </a>
           
           <div className="flex space-x-6 text-neutral-400">
-            <a href="#" className="hover:text-neutral-900 transition-colors"><Github size={20} /></a>
-            <a href="#" className="hover:text-neutral-900 transition-colors"><Linkedin size={20} /></a>
-            <a href="#" className="hover:text-neutral-900 transition-colors"><Instagram size={20} /></a>
+            <a href="#" className="hover:text-neutral-900 transition-colors" aria-label="Github"><Github size={20} /></a>
+            <a href="#" className="hover:text-neutral-900 transition-colors" aria-label="LinkedIn"><Linkedin size={20} /></a>
+            <a href="#" className="hover:text-neutral-900 transition-colors" aria-label="Instagram"><Instagram size={20} /></a>
           </div>
         </div>
       </div>
@@ -251,7 +252,7 @@ const Work = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
           {projects.map((project) => (
             <div key={project.id} className="group cursor-pointer">
-              <div className="bg-neutral-100 aspect-[4/3] mb-6 overflow-hidden rounded-lg relative">
+              <div className="bg-gradient-to-br from-neutral-100 to-neutral-200 aspect-[4/3] mb-6 overflow-hidden rounded-lg relative">
                 {/* Abstract visualization of project */}
                 <div className="absolute inset-0 flex items-center justify-center text-neutral-300 font-bold text-9xl select-none group-hover:scale-105 transition-transform duration-700">
                     {project.id}
@@ -310,16 +311,42 @@ const Contact = () => {
           Enviar Email
         </a>
 
-        <div className="mt-20 pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center text-neutral-500 text-sm">
+        <footer className="mt-20 pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center text-neutral-500 text-sm">
             <p>&copy; {new Date().getFullYear()} Dev Portfolio. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
                 <a href="#" className="hover:text-white transition-colors">GitHub</a>
                 <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
                 <a href="#" className="hover:text-white transition-colors">Instagram</a>
             </div>
-        </div>
+        </footer>
       </div>
     </section>
+  );
+};
+
+const BackToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <button onClick={scrollToTop} className={`fixed bottom-8 right-8 p-3 bg-neutral-900 text-white rounded-full shadow-lg transition-all duration-300 z-50 hover:bg-blue-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`} aria-label="Voltar ao topo">
+      <ArrowUp size={20} />
+    </button>
   );
 };
 
@@ -335,6 +362,7 @@ export default function App() {
             <Work />
             <Contact />
         </main>
+        <BackToTop />
     </div>
   );
 }
