@@ -1,16 +1,23 @@
 :root {
-  --bg-color: #0f172a; /* Azul muito escuro (moderno) */
-  --card-bg: #1e293b;
-  --text-color: #f1f5f9;
-  --accent: #3b82f6;
-  --accent-glow: #60a5fa;
+  --bg-color: #030712; /* Preto profundo para luxo */
+  --card-bg: rgba(30, 41, 59, 0.4); /* Translúcido para efeito vidro */
+  --text-color: #f8fafc;
+  --accent: #6366f1; /* Indigo vibrante */
+  --accent-glow: #818cf8;
+  --border-color: rgba(255, 255, 255, 0.1); /* Borda sutil e elegante */
+  --text-muted: #94a3b8;
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: var(--bg-color);
+  background: radial-gradient(circle at 50% 0%, #1e293b 0%, var(--bg-color) 70%);
   color: var(--text-color);
   font-family: 'Inter', system-ui, sans-serif;
   display: flex;
@@ -25,22 +32,27 @@ body {
 
 /* Efeito Gradiente no Texto */
 .gradient-text {
-  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(to right, #818cf8, #c084fc, #f472b6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 3.5em;
+  font-size: 4em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   margin-bottom: 0.2rem;
 }
 
-.header p { color: #94a3b8; font-size: 1.1rem; margin-bottom: 3rem; }
+.header p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 3rem; }
 
-h2 { border-bottom: 2px solid #334155; padding-bottom: 0.5rem; margin-top: 2rem; }
+h2 { border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 3rem; font-weight: 300; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.9rem; color: var(--text-muted); }
 
 .card {
   background-color: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #334155;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--glass-shadow);
 }
 
 /* Estilo dos Badges de Skills */
@@ -52,10 +64,11 @@ h2 { border-bottom: 2px solid #334155; padding-bottom: 0.5rem; margin-top: 2rem;
 }
 
 .skill-badge {
-  background-color: #334155;
-  color: #60a5fa;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  color: var(--accent-glow);
   padding: 0.5rem 1rem;
-  border-radius: 20px;
+  border-radius: 9999px;
   font-size: 0.9rem;
   font-weight: 600;
 }
@@ -70,32 +83,36 @@ h2 { border-bottom: 2px solid #334155; padding-bottom: 0.5rem; margin-top: 2rem;
 
 .project-card {
   background-color: var(--card-bg);
+  backdrop-filter: blur(10px);
   padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #334155;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
   text-decoration: none; /* Remove o sublinhado do link */
   color: inherit;
-  transition: transform 0.2s, border-color 0.2s;
+  transition: all 0.3s ease;
   display: block;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
-  border-color: var(--accent);
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+  background-color: rgba(30, 41, 59, 0.6);
 }
 
 .link-text { color: var(--accent); font-size: 0.85rem; font-weight: bold; margin-top: 10px; display: block; }
 
 .primary-button {
   margin-top: 3rem;
-  border-radius: 8px;
+  border-radius: 9999px;
   padding: 1em 2em;
   font-weight: 600;
-  background: linear-gradient(45deg, var(--accent), #2563eb);
+  background: linear-gradient(135deg, var(--accent), #a855f7);
   color: white;
   border: none;
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
 }
-.primary-button:hover { opacity: 0.9; }
+.primary-button:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(99, 102, 241, 0.5); }
 footer { margin-top: 4rem; color: #64748b; font-size: 0.85rem; text-align: center; }
