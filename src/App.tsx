@@ -5,37 +5,54 @@ function App() {
   const [contactText, setContactText] = useState("Entrar em Contato");
 
   const projects = [
-    { title: "Projeto Alpha", desc: "Um dashboard feito em React." },
-    { title: "E-commerce Beta", desc: "Loja virtual com TypeScript." },
-    { title: "App Gamma", desc: "Aplicativo de tarefas." }
+    { title: "Projeto Alpha", desc: "Um dashboard interativo.", link: "#" },
+    { title: "E-commerce Beta", desc: "Loja completa com carrinho.", link: "#" },
+    { title: "App Gamma", desc: "Gestão de tarefas automatizada.", link: "#" }
   ];
 
+  const skills = ["React", "TypeScript", "Vite", "Git", "CSS Moderno"];
+
   const handleContact = () => {
-    setContactText("Obrigado pelo interesse! 🚀");
+    setContactText("Obrigado! 🚀");
     setTimeout(() => setContactText("Entrar em Contato"), 3000);
   };
 
   return (
     <div className="container">
       <header className="header">
-        <h1>Alexandre Dev</h1>
-        <p>Desenvolvedor Frontend & Criador de Soluções</p>
+        {/* Título com efeito gradiente */}
+        <h1 className="gradient-text">Alexandre Dev</h1>
+        <p>Transformando ideias em código com React & TypeScript</p>
       </header>
 
       <main>
         <section className="card">
           <h2>Sobre Mim</h2>
-          <p>Olá! Sou o Alexandre. Sou apaixonado por tecnologia, TypeScript e React. 
-          Este é meu pequeno site em produção.</p>
+          <p>Desenvolvedor focado em performance e experiência do usuário.
+          Sempre aprendendo novas tecnologias para criar soluções melhores.</p>
         </section>
 
-        <section className="projects-grid">
-          {projects.map((project, index) => (
-            <div key={index} className="project-card">
-              <h3>{project.title}</h3>
-              <p>{project.desc}</p>
-            </div>
-          ))}
+        {/* Nova Seção de Skills */}
+        <section className="skills-section">
+          <h2>Tecnologias</h2>
+          <div className="skills-grid">
+            {skills.map((skill, index) => (
+              <span key={index} className="skill-badge">{skill}</span>
+            ))}
+          </div>
+        </section>
+
+        <section className="projects-section">
+          <h2>Meus Projetos</h2>
+          <div className="projects-grid">
+            {projects.map((project, index) => (
+              <a key={index} href={project.link} className="project-card">
+                <h3>{project.title}</h3>
+                <p>{project.desc}</p>
+                <span className="link-text">Ver projeto →</span>
+              </a>
+            ))}
+          </div>
         </section>
 
         <div className="cta-section">
@@ -46,7 +63,7 @@ function App() {
       </main>
 
       <footer>
-        <p>© 2024 - Feito com React e Vite</p>
+        <p>© 2025 - Alexandre Dev • Atualizado via CI/CD</p>
       </footer>
     </div>
   );
